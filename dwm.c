@@ -1292,7 +1292,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 
 	for (n = 0, nbc = nexttiled(c->mon->clients); nbc; nbc = nexttiled(nbc->next), n++);
 
-	if(c->isfloating || c->mon->sellt[c->mon->sellt]->arrange == NULL) {
+	if(c->isfloating || c->mon->lt[c->mon->sellt]->arrange == NULL) {
 		gapincr = gapoffset = 0;
 	} else {
 		if(c->mon->lt[c->mon->sellt]->arrange == monocle || n == 1){
@@ -1306,7 +1306,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	}
 
 	c->oldx = c->x; c->x = wc.x = x + gapoffset;
-	c->oldy = c->y; c->y = wx.y = y + gapoffset;
+	c->oldy = c->y; c->y = wc.y = y + gapoffset;
 	c->oldw = c->w; c->w = wc.width = w - gapincr;
 	c->oldh = c->h; c->h = wc.height = h - gapincr;
 
